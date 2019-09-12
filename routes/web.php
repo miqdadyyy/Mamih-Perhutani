@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//		login 		//
+
+Route::get('/login','AuthController@index');
+
+Route::post('/postlogin','AuthController@postlogin');
+
+Route::get('/logout','AuthController@logout');
+
+//		endlogin 		//
+
+//		regist 		//
+
+Route::get('/pendaftaran-mandor','RegisterMandorController@index');
+
+Route::post('/kirim/pendaftaran','RegisterMandorController@insert');
+
+//		endregist 		//
