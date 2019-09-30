@@ -11,6 +11,37 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/daftar-mandor', function (){return view('public.daftar');});
+
+Route::get('/form-kecocokan','CocokController@index');
+
+Route::post('/send/hitung','CocokController@hitung');
+
+Route::get('/show','CocokController@');
+
+// Route::post('/kirim/pendaftaran','RegisterMandorController@insert');
+
+Route::get('/login','AuthController@index');
+
+Route::post('/send/registration','RegisterMandorController@insert');
+
+Route::post('/postlogin','AuthController@postlogin');
+
+Route::get('/logout','AuthController@logout');
+
+//===||login SEMUA||===// 
+
+Route::group(['middleware' => ['auth','checkRole:mandor,bos']], function(){
+
+Route::get('/home','AuthController@role');
+
+
+});
+
+//===||login MANDOR||===// 
+
+Route::group(['middleware' => ['auth','checkRole:mandor']], function(){
+
+Route::get('/profile','ProfilController@indexMandor');
+
 });
