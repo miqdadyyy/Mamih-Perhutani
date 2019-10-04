@@ -38,7 +38,7 @@ class RegisterMandorController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat
         ]);
-        $user->name = $request->nama_depan.$request->nama_depan;
+        $user->name = $request->nama_depan.' '.$request->nama_depan;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
 

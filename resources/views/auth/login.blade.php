@@ -29,7 +29,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<!-- <img src="{{asset('logon/images/')}}" alt="IMG"> -->
+					<img src="{{asset('logon/images/p.png')}}" alt="IMG">
 				</div>
 
 				<form class="form-auth-small" action="/postlogin" method="POST">
