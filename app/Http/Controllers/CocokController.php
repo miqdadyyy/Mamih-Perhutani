@@ -18,13 +18,13 @@ class CocokController extends Controller
     		->where('kelembaban','=',$req->kelembaban)
     		->first();
 
-    	$riw = new 	\
+//    	$riw = new 	\
 
     	return redirect()->back()->with('sukses','Sukses simpan ke DB');
     }
     public function lihatHasil()
     {
-    	$hasil = \App\
-    	return view()
+//    	$hasil = \App\
+//    	return view()
     }
 }

@@ -8,6 +8,9 @@ class AuthController extends Controller
 {
     public function index()
     {
+        if(Auth::user()){
+            return redirect('/home');
+        }
     	return view('auth.login');
     }
     public function postlogin(Request $request)
