@@ -90,5 +90,8 @@ class PlantController extends Controller
         $plant = Plant::findOrFail($id);
         toastr()->success('Tanaman Berhasil Dihapus');
         $plant->delete();
+
+        toastr()->success("Data Berhasil Dihapus");
+        return redirect()->back();
     }
 }

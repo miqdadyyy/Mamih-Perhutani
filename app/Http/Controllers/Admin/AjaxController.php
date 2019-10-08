@@ -35,6 +35,9 @@ class AjaxController extends Controller
             ->addColumn('date', function($q){
                 return date('d/M/Y', strtotime($q->created_at));
             })
+            ->addColumn('mandor', function($q){
+                return $q->user->name;
+            })
             ->rawColumns(['action'])
             ->make(true);
     }

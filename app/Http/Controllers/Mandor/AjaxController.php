@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Mandor;
 use App\Land;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
 class AjaxController extends Controller
 {
     public function getLands(){
-        $lands = Land::get();
+        $lands = Auth::user()->lands;
         foreach ($lands as $index => $land){
             $land->no = $index+1;
         }

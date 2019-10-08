@@ -1,85 +1,93 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
+
+@section('title', 'Data Tanah')
+
+@section('css')
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('dashboard-assets/modules/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashboard-assets/modules/css/select.bootstrap4.min.css') }}">
+@endsection
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-left justify-content-center">
-                            Data Pengukuran Tanah
+    <section class="section">
+        <div class="section-header">
+            <h1>Data Tanah</h1>
+            <div class="section-header-breadcrumb">
+            </div>
+        </div>
+
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Data Tanah</h4>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-bordered" id="plant-table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Mandor</th>
-                                <th>PH</th>
-                                <th>Temperature</th>
-                                <th>Kelembaban</th>
-                                <th>Oksigen</th>
-                                <th>Tekstur</th>
-                                <th>Tanggal</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($lands as $index => $land)
-                                <tr>
-                                    <td>{{ $index+1 }}</td>
-                                    <td>{{ $land->user->name }}</td>
-                                    <td>{{ $land->ph }}</td>
-                                    <td>{{ $land->temperature }}</td>
-                                    <td>{{ $land->humidity }}</td>
-                                    <td>{{ $land->oksygen }}</td>
-                                    <td>{{ $land->texture }}</td>
-                                    <td>{{ $land->created_at->format('d/M/Y') }}</td>
-                                    <td>
-                                        <button class="btn btn-danger" onclick="deleteData('{{ $land->id }}')">Delete</button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="land-table">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th>Mandor</th>
+                                        <th>PH</th>
+                                        <th>Temperature</th>
+                                        <th>Kelembaban</th>
+                                        <th>Oksigen</th>
+                                        <th>Tekstur</th>
+                                        <th>Tanggal</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{--<form action="{{ route('admin.plant.destroy', ['plant' => -1]) }}" id="plant-form" method="post">--}}
-    {{--@csrf--}}
-    {{--@method('DELETE')--}}
-    {{--</form>--}}
+    </section>
+
+    <form action="{{ route('admin.land.destroy', ['land' => -1]) }}" id="land-form" method="post">
+        @csrf
+        @method('DELETE')
+    </form>
 @endsection
 
+
 @section('js')
+    <!-- JS Libraies -->
+    <script src="{{ asset('dashboard-assets/modules/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/modules/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('dashboard-assets/modules/js/select.bootstrap4.min.js') }}"></script>
+
     <script>
-        // $(document).ready(function(){
-            $('#plant-table').DataTable({
-                orderable: true
-                {{--processing: true,--}}
-                {{--serverSide: true,--}}
-                {{--ajax: '{{ route('admin.ajax.lands') }}',--}}
-                {{--columns: [--}}
-                {{--{data: 'no'},--}}
-                {{--{data: 'ph'},--}}
-                {{--{data: 'temperature'},--}}
-                {{--{data: 'humidity'},--}}
-                {{--{data: 'oksygen'},--}}
-                {{--{data: 'texture'},--}}
-                {{--{data: 'date'},--}}
-                {{--{data: 'action'},--}}
-                {{--]--}}
-            });
-        // });
+        $('#land-table').DataTable({
+            orderable: true,
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('admin.ajax.lands') }}',
+            columns: [
+                {data: 'no'},
+                {data: 'mandor'},
+                {data: 'ph'},
+                {data: 'temperature'},
+                {data: 'humidity'},
+                {data: 'oksygen'},
+                {data: 'texture'},
+                {data: 'date'},
+                {data: 'action'},
+            ]
+        });
 
         function deleteData(id) {
-            var url = $('#plant-form').attr('action');
+            var url = $('#land-form').attr('action');
             urls = url.split('/');
             urls[urls.length - 1] = id;
-            $('#plant-form').attr('action', urls.join('/')).submit();
+            $('#land-form').attr('action', urls.join('/')).submit();
         }
     </script>
 @endsection

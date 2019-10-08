@@ -82,6 +82,8 @@ class LandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Land::findOrFail($id)->delete();
+        toastr()->success("Data Berhasil Dihapus");
+        return redirect()->back();
     }
 }

@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function lands(){
+        return $this->hasMany('App\Land', 'user_id');
+    }
+
     public function role(){
         return $this->belongsTo('App\Role', 'role_id');
     }
