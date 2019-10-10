@@ -12,6 +12,9 @@
     <section class="section">
         <div class="section-header">
             <h1>Data Tanah</h1>
+            <div class="section-header-button">
+                <a href="{{ route('admin.land.create') }}" class="btn btn-primary">Add New</a>
+            </div>
             <div class="section-header-breadcrumb">
             </div>
         </div>
