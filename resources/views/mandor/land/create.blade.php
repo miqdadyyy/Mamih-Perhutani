@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('mandor.layouts.app')
 
 @section('title', 'Home')
 
@@ -21,9 +21,9 @@
             <div class="col-12 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Tambah Tanaman</h4>
+                        <h4>Tambah Pengukuran Tanah</h4>
                         <br>
-                        <form action="{{ route('admin.plant.store') }}" method="post">
+                        <form action="{{ route('mandor.land.store') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="ph">Tingkat Keasaman (PH): </label>
