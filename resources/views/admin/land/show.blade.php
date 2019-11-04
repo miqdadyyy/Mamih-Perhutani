@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title', 'Hasil Perhitungan')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -62,7 +64,7 @@
                             </tr>
                         </table>
                         <p>Sehingga hasil kecocokan antara tanah yang diukur dengan tanaman <strong>{{ $land->plant->name }}</strong> yaitu : </p>
-                        <h4>{{ $calculation_result->result * 100 }}% ({{ $calculation_result->status }})</h4>
+                        <h4 style="color: {{ $calculation_result->status == "Cocok" ? '#32c259' : ($calculation_result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $calculation_result->result * 100 }}% ({{ $calculation_result->status }})</h4>
                     </div>
                 </div>
             </div>
@@ -87,8 +89,8 @@
                             @foreach($suggestion_result as $key => $result)
                                 @php($result = (object)$result)
                                 <tr>
-                                    <td>{{ $result->plant->name }}</td>
-                                    <td>{{ $result->result * 100 }} %</td>
+                                    <td style="color: {{ $result->status == "Cocok" ? '#32c259' : ($calculation_result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $result->plant->name }}</td>
+                                    <td style="color: {{ $result->status == "Cocok" ? '#32c259' : ($calculation_result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $result->result * 100 }} %</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -191,16 +193,15 @@
             data: {
                 labels: {!! json_encode($graph_suggest_name) !!},
                 datasets: [{
-                    label: 'Statistics',
+                    label: 'Presentase',
                     data: {{ json_encode($graph_suggest_value) }},
                     borderWidth: 2,
-                    backgroundColor: 'rgba(63,82,227,.8)',
-                    borderWidth: 0,
-                    borderColor: 'transparent',
-                    pointBorderWidth: 0,
-                    pointRadius: 3.5,
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(254,86,83,.7)',
+                    borderWidth: 2.5,
                     pointBackgroundColor: 'transparent',
-                    pointHoverBackgroundColor: 'rgba(63,82,227,.8)',
+                    pointBorderColor: 'transparent',
+                    pointRadius: 4
                 }]
             },
             options: {
@@ -215,16 +216,12 @@
                         },
                         ticks: {
                             beginAtZero: true,
-                            stepSize: 200,
-                            callback: function(value, index, values) {
-                                return value + '%';
-                            }
+                            stepSize: 200
                         }
                     }],
                     xAxes: [{
                         gridLines: {
-                            display: false,
-                            tickMarkLength: 15,
+                            display: false
                         }
                     }]
                 },

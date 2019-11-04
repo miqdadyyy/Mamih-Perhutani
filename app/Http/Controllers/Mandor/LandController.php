@@ -49,10 +49,12 @@ class LandController extends Controller
             'oksygen' => 'required',
             'texture' => 'required',
             'plant' => 'required',
+
         ]);
 
         DB::beginTransaction();
         try{
+            $request->request->set('plant_id', $request->plant);
             $request->request->set('user_id', Auth::id());
             Land::create($request->all());
             DB::commit();
