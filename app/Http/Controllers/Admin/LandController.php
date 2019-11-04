@@ -57,11 +57,20 @@ class LandController extends Controller
         foreach (Plant::all() as $p) {
             array_push($suggestion_result, $this->calculate_compability($p, $land));
         }
-        $suggestion_result = collect($suggestion_result)->sortByDesc('result');
+        $suggestion_result = collect($suggestion_result)->sortByDesc('result')->take(5);
+//        return $suggestion_result;
         $graph_plant = [$plant->ph, $plant->temperature, $plant->humidity, $plant->oksygen];
         $graph_land = [$land->ph, $land->temperature, $land->humidity, $land->oksygen];
 
-        return view('admin.land.show', compact('land', 'calculation_result', 'suggestion_result', 'graph_plant', 'graph_land'));
+        $graph_suggest_name = $suggestion_result->pluck('plant.name');
+        $graph_suggest_value =  $suggestion_result->map(function($q){
+//            dd($q);
+            return [
+                'result' => $q['result'] * 100
+            ];
+        })->pluck('result');
+
+        return view('admin.land.show', compact('land', 'calculation_result', 'suggestion_result', 'graph_plant', 'graph_land', 'graph_suggest_name', 'graph_suggest_value'));
     }
 
     private function calculate_compability($plant, $land)
