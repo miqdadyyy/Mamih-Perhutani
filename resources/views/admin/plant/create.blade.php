@@ -49,9 +49,12 @@
                                        value="{{ old('oksygen') }}">
                             </div>
                             <div class="form-group">
-                                <label for="texture">Tingkat Tekstur: </label>
-                                <input type="number" class="form-control" id="texture" name="texture"
-                                       value="{{ old('texture') }}">
+                                <label for="texture">Tingkat Tekstur Tanah : </label>
+                                <select class="form-control select2" id="texture" name="texture">
+                                    @foreach(\App\Texture::get() as $texture)
+                                        <option value="{{ $texture->id }}">{{ $texture->particle }} ({{ $texture->value_start }} - {{ $texture->value_end }})</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <input type="submit" value="Submit" class="btn btn-primary float-right">
                         </form>

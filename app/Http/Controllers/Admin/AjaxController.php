@@ -19,6 +19,9 @@ class AjaxController extends Controller
             ->addColumn('action', function($q){
                 return '<button class="btn btn-danger" onclick="deleteData(\''. $q->id .'\')">Delete</button>';
             })
+            ->addColumn('texture_', function($q){
+                return $q->texture_->particle;
+            })
             ->rawColumns(['action'])
             ->make(true);
     }
@@ -30,7 +33,8 @@ class AjaxController extends Controller
         }
         return DataTables::of($lands)
             ->addColumn('action', function($q){
-                return '<button class="btn btn-danger" onclick="deleteData(\''. $q->id .'\')">Delete</button>';
+                return '<button class="btn btn-danger" onclick="deleteData(\''. $q->id .'\')">Delete</button>' .
+                    '<button class="btn btn-primary" onclick="document.location = \'land/'. $q->id .'\'">Detail</button>';
             })
             ->addColumn('date', function($q){
                 return date('d/M/Y', strtotime($q->created_at));

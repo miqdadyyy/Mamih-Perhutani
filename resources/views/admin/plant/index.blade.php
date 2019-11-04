@@ -78,7 +78,7 @@
                 {data: 'temperature'},
                 {data: 'humidity'},
                 {data: 'oksygen'},
-                {data: 'texture'},
+                {data: 'texture_'},
                 {data: 'action'},
             ]
         });

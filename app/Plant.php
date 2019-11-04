@@ -26,4 +26,8 @@ class Plant extends Model
     protected $fillable = ['name', 'ph', 'temperature', 'humidity', 'oksygen', 'texture'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
+    public function texture_(){
+        return $this->belongsTo('App\Texture', 'texture');
+    }
+
 }

@@ -38,6 +38,11 @@ class PlantController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|min:3|max:191',
+            'texture' => 'required',
+            'ph' => 'required',
+            'temperature' => 'required',
+            'humidity' => 'required',
+            'oksygen' => 'required'
         ]);
 
         Plant::create($request->all());
