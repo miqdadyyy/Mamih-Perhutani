@@ -58,7 +58,6 @@ class LandController extends Controller
             array_push($suggestion_result, $this->calculate_compability($p, $land));
         }
         $suggestion_result = collect($suggestion_result)->sortByDesc('result')->take(5);
-//        return $suggestion_result;
         $graph_plant = [$plant->ph, $plant->temperature, $plant->humidity, $plant->oksygen];
         $graph_land = [$land->ph, $land->temperature, $land->humidity, $land->oksygen];
 
@@ -102,8 +101,8 @@ class LandController extends Controller
         for ($i = 0; $i < 5; $i++) {
             array_push($data_temperature , -1);
         }
-        $data_temperature[2] = [$plant->temperature - 7.5, $plant->temperature + 7.5];
-        $data_temperature[1] = [$data_temperature[2][0] - 15, $data_temperature[2][0]];
+        $data_temperature[2] = [$plant->temperature - 3, $plant->temperature + 3];
+        $data_temperature[1] = [$data_temperature[2][0] - 6, $data_temperature[2][0]];
         $data_temperature[0] = [$data_temperature[1][0]];
         $data_temperature[3] = [$data_temperature[2][1], $data_temperature[2][1] + 15];
         $data_temperature[4] = [$data_temperature[3][1]];
@@ -139,7 +138,7 @@ class LandController extends Controller
         return [
             'plant' => $plant,
             'result' => $result,
-            'status' => $result * 100 < 40 ? 'Tidak Cocok' : ($result * 100 < 70 ? 'Dipertimbangkan' : 'Cocok'),
+            'status' => $result * 100 < 50 ? 'Tidak Cocok' : ($result * 100 < 70 ? 'Dipertimbangkan' : 'Cocok'),
             'value' => [
                 'texture' => $texture_value,
                 'ph' => $ph_value,

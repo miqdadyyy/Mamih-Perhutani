@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id', 'phone'
+        'name', 'email', 'password', 'role_id', 'phone', 'token'
     ];
 
     /**
@@ -50,5 +51,11 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public static function auth(Request $request){
+        $token = $request->header('token');
+        $user = User::where('token', $token)->first();
+        return $user;
     }
 }
