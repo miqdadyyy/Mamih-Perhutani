@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['as' => 'api.', 'namespace' => 'Api'], function(){
+    Route::post('login','AuthController@login');
+
+    Route::group(['middleware' => 'token'], function(){
+        Route::get('/tanaman', 'MandorController@getPlants');
+        Route::get('/tanah', 'MandorController@getMyLands');
+        Route::post('/tanah', 'MandorController@addLand');
+        Route::get('/texture-tanah', 'MandorController@getTexture');
+    });
+});

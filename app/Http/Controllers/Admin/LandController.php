@@ -58,7 +58,6 @@ class LandController extends Controller
             array_push($suggestion_result, $this->calculate_compability($p, $land));
         }
         $suggestion_result = collect($suggestion_result)->sortByDesc('result')->take(5);
-//        return $suggestion_result;
         $graph_plant = [$plant->ph, $plant->temperature, $plant->humidity, $plant->oksygen];
         $graph_land = [$land->ph, $land->temperature, $land->humidity, $land->oksygen];
 

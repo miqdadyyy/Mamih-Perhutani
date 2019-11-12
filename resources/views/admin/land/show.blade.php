@@ -89,8 +89,8 @@
                             @foreach($suggestion_result as $key => $result)
                                 @php($result = (object)$result)
                                 <tr>
-                                    <td style="color: {{ $result->status == "Cocok" ? '#32c259' : ($calculation_result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $result->plant->name }}</td>
-                                    <td style="color: {{ $result->status == "Cocok" ? '#32c259' : ($calculation_result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $result->result * 100 }} %</td>
+                                    <td style="color: {{ $result->status == "Cocok" ? '#32c259' : ($result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $result->plant->name }}</td>
+                                    <td style="color: {{ $result->status == "Cocok" ? '#32c259' : ($result->status == "Dipertimbangkan" ? '#5a83db' : '#db605a') }}">{{ $result->result * 100 }} %</td>
                                 </tr>
                             @endforeach
                             </tbody>
