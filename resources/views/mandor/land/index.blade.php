@@ -32,11 +32,12 @@
                                     <thead>
                                     <tr>
                                         <th class="text-center">#</th>
+                                        <th>Blok</th>
                                         <th>PH</th>
                                         <th>Temperature</th>
                                         <th>Kelembaban</th>
                                         <th>Oksigen</th>
-                                        <th>Tekstur</th>
+                                        <th>Tanaman</th>
                                         <th>Tanggal</th>
                                         <th>Action</th>
                                     </tr>
@@ -74,11 +75,12 @@
             ajax: '{{ route('mandor.ajax.lands') }}',
             columns: [
                 {data: 'no'},
+                {data: 'blok'},
                 {data: 'ph'},
                 {data: 'temperature'},
                 {data: 'humidity'},
                 {data: 'oksygen'},
-                {data: 'texture'},
+                {data: 'tanaman'},
                 {data: 'date'},
                 {data: 'action'},
             ]

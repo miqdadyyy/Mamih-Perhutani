@@ -8,9 +8,9 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
-            <li class="nav-item dropdown">
-                <a href="{{ route('mandor.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-            </li>
+            {{--<li class="nav-item dropdown">--}}
+                {{--<a href="{{ route('mandor.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>--}}
+            {{--</li>--}}
             <li class="nav-item dropdown">
                 <a href="{{ route('mandor.land.index')  }}" class="nav-link"><i class="fas fa-home"></i><span>Pengukuran Tanah</span></a>
             </li>

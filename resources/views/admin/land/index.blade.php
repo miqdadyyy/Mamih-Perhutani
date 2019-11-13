@@ -30,11 +30,11 @@
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Mandor</th>
+                                        <th>Blok</th>
                                         <th>PH</th>
                                         <th>Temperature</th>
                                         <th>Kelembaban</th>
                                         <th>Oksigen</th>
-                                        <th>Tekstur</th>
                                         <th>Tanggal</th>
                                         <th>Action</th>
                                     </tr>
@@ -73,11 +73,11 @@
             columns: [
                 {data: 'no'},
                 {data: 'mandor'},
+                {data: 'blok'},
                 {data: 'ph'},
                 {data: 'temperature'},
                 {data: 'humidity'},
                 {data: 'oksygen'},
-                {data: 'texture'},
                 {data: 'date'},
                 {data: 'action'},
             ]

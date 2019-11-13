@@ -8,7 +8,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Grafik Hasil Perhitungan</h4>
+                        <h4>Grafik Hasil Perhitungan {{ $land->blok }}</h4>
                         <div class="card-header-action">
                             {{--<a href="#" class="btn active">Week</a>--}}
                         </div>

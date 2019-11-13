@@ -26,6 +26,11 @@
                         <form action="{{ route('mandor.land.store') }}" method="post">
                             @csrf
                             <div class="form-group">
+                                <label for="blok">Blok : </label>
+                                <input type="text" class="form-control" id="blok" name="blok" value="{{ old('blok') }}"
+                                       required>
+                            </div>
+                            <div class="form-group">
                                 <label for="ph">Tingkat Keasaman (PH): </label>
                                 <input type="number" class="form-control" id="ph" name="ph" value="{{ old('ph') }}"
                                        required>

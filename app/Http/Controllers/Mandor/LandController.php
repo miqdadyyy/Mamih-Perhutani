@@ -49,7 +49,7 @@ class LandController extends Controller
             'oksygen' => 'required',
             'texture' => 'required',
             'plant' => 'required',
-
+            'blok' => 'required'
         ]);
 
         DB::beginTransaction();

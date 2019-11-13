@@ -26,6 +26,7 @@ class MandorController extends Controller
         $user = User::auth($request);
 
         Land::create([
+            'blok' => $request->blok,
             'plant_id' => $request->plant_id,
             'user_id' => $user->id,
             'ph' => $request->ph,

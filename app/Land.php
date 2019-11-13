@@ -24,7 +24,7 @@ class Land extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'plant_id', 'ph', 'temperature', 'humidity', 'oksygen', 'texture', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['user_id', 'plant_id', 'blok', 'ph', 'temperature', 'humidity', 'oksygen', 'texture', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
