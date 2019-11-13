@@ -56,6 +56,7 @@ class LandController extends Controller
         try{
             $request->request->set('plant_id', $request->plant);
             $request->request->set('user_id', Auth::id());
+	    $request->request->set('plant_id', $request->plant);
             Land::create($request->all());
             DB::commit();
             toastr()->success('Data Berhasil Ditambahkan');
