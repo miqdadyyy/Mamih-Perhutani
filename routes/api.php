@@ -19,11 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['as' => 'api.', 'namespace' => 'Api'], function(){
     Route::post('login','AuthController@login');
+    Route::post('check-token', 'AuthController@checkToken');
 
     Route::group(['middleware' => 'token'], function(){
         Route::get('/tanaman', 'MandorController@getPlants');
         Route::get('/tanah', 'MandorController@getMyLands');
-        Route::post('/tanah', 'MandorController@addLand');
+        Route::post('/detail-tanah', 'MandorController@getDetailLands');
         Route::get('/texture-tanah', 'MandorController@getTexture');
+        Route::post('/tanah', 'MandorController@addLand');
     });
 });

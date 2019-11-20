@@ -27,4 +27,14 @@ class AuthController extends Controller
             return json_response(0, "Password Salah");
         }
     }
+
+    public function checkToken(Request $request){
+        $token = $request->token;
+        $user = User::where('token', $token)->first();
+        if(is_null($user)){
+            return json_response_error("Token not found");
+        } else {
+            return json_response(1, "Token Accepted", $user);
+        }
+    }
 }

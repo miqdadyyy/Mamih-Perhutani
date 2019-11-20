@@ -43,6 +43,6 @@ class Land extends Model
     }
 
     public function texture_(){
-        return $this->belongsTo('App\Texture');
+        return $this->belongsTo('App\Texture', 'texture');
     }
 }

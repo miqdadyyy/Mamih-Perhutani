@@ -19,6 +19,9 @@ class MandorController extends Controller
     public function getMyLands(Request $request){
         $user = User::auth($request);
         $lands = Land::where('user_id', $user->id)->get();
+        foreach ($lands as $land){
+            $land->date = $land->created_at->format('d M Y');
+        }
         return json_response(1, "Success", $lands);
     }
 
@@ -56,5 +59,19 @@ class MandorController extends Controller
     public function getTexture(){
         $textures = Texture::get();
         return json_response(1, "Success", $textures);
+    }
+
+    public function getDetailLands(Request $request){
+        $user = User::auth($request);
+        $land = Land::with('plant', 'texture_')->find($request->id);
+        if($land == null){
+            return json_response_error("Not found", 404);
+        }
+
+        if($land->user_id != $user->id){
+            return json_response_error("Forbidden", 403);
+        } else {
+            return json_response(1, "Success", $land);
+        }
     }
 }
